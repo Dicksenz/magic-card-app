@@ -6,6 +6,15 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/table', function(req, res){
+  res.sendFile(__dirname + '/table.html');
+});
+
+app.get('/cards', function(req, res){
+  res.sendFile(__dirname + '/cards.html');
+});
+
+
 io.on('connection', function(socket){
   console.log('a user connected');
   socket.on('disconnect', function(){
