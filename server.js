@@ -21,6 +21,12 @@ io.on('connection', function(socket){
     console.log('user disconnected');
   });
 
+  // Table client connected
+  socket.on('load-table', function(data){
+    console.log(data);
+
+  });
+
 });
 
 http.listen(3000, function(){
