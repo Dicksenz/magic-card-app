@@ -6,68 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Card Table</title>
     <script src = "/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <link rel="shortcut icon" href="#" />
+
     <style>
-                /* ANIMATION CSS */
-
-        .card {
-            /* out of screen: translateY viewport height */
-            transform: translateY(100vh);
-        }
-
-        .card.thrown {
-            transition: transform 1s ease-in-out;
-            /* back on screen: translateY to a lower level */
-            transform: translateY(10vh)
-        }
-
-        /* AUX CSS */
-
-        /* 
-        I'm using these amazing project for the cards: 
-        https://sourceforge.net/projects/vector-cards/
-        licensed under LPGL 3.0.
-        */
 
         body {
             background-image: url("https://i.imgur.com/Ak9p24B.jpg");
             overflow: hidden;
         }
 
-        .card {
-            margin: 0 auto; 
-        }
-
-        button {
-        background-color:red;
-        color: white;
-        border: 0;
-        padding: 10px;
-        }
-
-        /* this sets the card size */
-        html {
-            font-size: 40px;
-        }
     </style>
 </head>
 <body>
     <script>
-        function throwCard() {
-            document.getElementById("samplecard").classList.remove("thrown");
-            setTimeout(function () {
-                document.getElementById("samplecard").classList.add("thrown");
-            }, 100);
-            }
-    </script>
-    <script>
         var socket = io();
-        socket.emit('load-table', 'Table is loaded');
-    </script>
-    <div id="samplecard" class="card rank13 spades">
-        <div class="face">
+        socket.emit('load-table', 'table is loaded');
+        socket.on('throw-card-to-table', function(data){
+            console.log(data);
 
-        </div>
-    </div>
-    
+        });
+    </script>
 </body>
 </html>

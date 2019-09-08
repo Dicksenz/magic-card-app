@@ -35,8 +35,11 @@ io.on('connection', function(socket){
   // Capture message throw card from cards.html client
   socket.on('throw-card', function(data){
     console.log(data)
+    socket.data = data;
+    io.emit('throw-card-to-table', data);
 
   });
+
 
 });
 
