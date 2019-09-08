@@ -6,13 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cards</title>
     <script src = "/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 
 </head>
 <body>
     <script>
-        var socket = io();
-        socket.emit('load-cards', 'cards loaded');
+        $(function () {
+            var socket = io();
+            socket.emit('load-cards', 'cards loaded');
+            $('form').submit(function(e){
+              e.preventDefault(); // prevents page reloading
+              socket.emit('throw-card', 'throw card');
+            });
+          });
     </script>
+    <form action="">
+        <button>Throw</button>
+    </form>
     
 </body>
 </html>
