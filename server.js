@@ -27,6 +27,12 @@ io.on('connection', function(socket){
 
   });
 
+  // Cards client connected
+  socket.on('load-cards', function(data){
+    console.log(data);
+
+  });
+
 });
 
 http.listen(3000, function(){
