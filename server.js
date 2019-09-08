@@ -11,14 +11,6 @@ io.on('connection', function(socket){
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });
-  //capture message from index.html to server
-  socket.on('chat message', function(msg){
-    // send message to all clients including sender
-    // io.emit('chat message', msg);
-
-    // sending to all clients except sender
-    socket.broadcast.emit('chat message', msg);
-  });
 
 });
 
