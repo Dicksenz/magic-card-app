@@ -1,3 +1,5 @@
+// Author : Dicksen Veloopillay
+
 var app = require('express')();
 var express= require('express'); 
 var app = express();
@@ -40,6 +42,7 @@ io.on('connection', function(socket){
   socket.on('throw-card', function(data){
     console.log(data)
     socket.data = data;
+    // Send messsage throw card from server to table client
     io.emit('throw-card-to-table', data);
 
   });
@@ -47,6 +50,7 @@ io.on('connection', function(socket){
 
 });
 
+// Application listen on port 3000
 http.listen(3000, function(){
   console.log('listening on *:3000');
 });

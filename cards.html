@@ -13,9 +13,11 @@
     <script>
         $(function () {
             var socket = io();
+            // Send message card loaded to server
             socket.emit('load-cards', 'cards loaded');
             $('form').submit(function(e){
               e.preventDefault(); // prevents page reloading
+              // Send message throw card to server
               socket.emit('throw-card', 'throw card');
             });
           });

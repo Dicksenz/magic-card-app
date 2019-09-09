@@ -64,7 +64,9 @@
     </script>
     <script>
         var socket = io();
+        // Send message table loaded to server.js
         socket.emit('load-table', 'table is loaded');
+        // Capture message throw card from server.js
         socket.on('throw-card-to-table', function(data){
             console.log(data);
             throwCard();
