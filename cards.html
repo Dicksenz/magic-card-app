@@ -7,6 +7,13 @@
     <title>Cards</title>
     <script src = "/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <style>
+        .newCard{
+            transition: transform 1s ease-out;
+                /* back on screen: translateY to a lower level */
+                transform: translateY(-1000vh)
+            }
+    </style>
 
 </head>
 <body>
@@ -17,6 +24,8 @@
             socket.emit('load-cards', 'cards loaded');
             $('form').submit(function(e){
               e.preventDefault(); // prevents page reloading
+              var element = document.getElementById("card");
+              element.classList.toggle("newCard");
               // Send message throw card to server
               socket.emit('throw-card', 'throw card');
             });
@@ -24,7 +33,7 @@
     </script>
     <center>
         <form action="">
-            <button><img src="/Ace.png" draggable="true"></button>
+            <button><img id="card"src="/Ace.png" draggable="true"></button>
         </form>
     </center>
 </body>
